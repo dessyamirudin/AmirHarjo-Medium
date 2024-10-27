@@ -1,0 +1,31 @@
+setwd("D:/Blog Purpose/AmirHarjo-Medium/English Speaking and GDP")
+
+# load library
+library(tidyverse)
+library(httr)
+library(rvest)
+library(janitor)
+library(ggplot2)
+library(patchwork)
+# library(ggpubr)
+
+# Data collection
+# Country GDP per Capita
+wiki_gdp_percapita <- "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)_per_capita"
+html_gdp_percapita <- read_html(wiki_gdp_percapita) %>% rvest::html_nodes("table.wikitable") %>% 
+  html_table(fill=TRUE)
+table_gdp_percapita <- html_gdp_percapita[[1]]
+table_gdp_percapita <- table_gdp_percapita %>% row_to_names(row_number = 1) %>% clean_names()
+colnames(table_gdp_percapita)[3:8] <- c("imf_estimate","imf_year","wb_estimate","wb_year","un_estimate","un_year")
+
+# Country Percentage English Speaking
+wiki_english_speaker <- "https://en.m.wikipedia.org/wiki/List_of_countries_by_English-speaking_population"
+html_english_speaker <- read_html(wiki_english_speaker) %>% rvest::html_nodes("table.wikitable") %>% 
+  html_table(fill=TRUE)
+table_english_speaker <- html_english_speaker[[1]]
+table_english_speaker <- table_english_speaker %>% row_to_names(row_number = 1) %>% clean_names()
+table_english_speaker <- table_english_speaker %>% select("country","eligible_population","no","percent")
+
+# analyze in Excel
+write.csv(table_english_speaker,"English_speaker.csv")
+write.csv(table_gdp_percapita,"GDP per capita.csv")
