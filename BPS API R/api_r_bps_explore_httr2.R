@@ -9,6 +9,9 @@ library(jsonlite)
 # req |> req_headers("Accept" = "application/json")
 # req %>%  req_headers("Accept" = "application/json")
 
+# BPS Documentation
+# https://webapi.bps.go.id/documentation/#
+
 # DOMAIN DATA
 domain_url = "https://webapi.bps.go.id/v1/api/domain/type/"
 

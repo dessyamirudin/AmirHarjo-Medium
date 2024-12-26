@@ -1,6 +1,9 @@
 library(httr)
 library(jsonlite)
 
+# BPS Documentation
+# https://webapi.bps.go.id/documentation/#
+
 # DOMAIN DATA
 domain_url = "https://webapi.bps.go.id/v1/api/domain/type/"
 
