@@ -1,6 +1,6 @@
 # set working directory
 
-setwd("../geolocation kabupaten kecamatan")
+setwd("D:/Blog Purpose/AmirHarjo-Medium/geolocation kabupaten kecamatan")
 
 library(tidyverse)
 library(geodata)
