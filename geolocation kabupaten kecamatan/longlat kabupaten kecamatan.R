@@ -7,6 +7,7 @@ library(geodata)
 
 # load peta data indonesia
 indo_data = geodata::gadm(country="ID", level=3, path=tempdir(),version="latest")
+# try use internal path
 
 # membaca filetoko
 data_toko = read.csv("data_toko.csv",sep=";")
